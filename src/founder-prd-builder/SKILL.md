@@ -1,5 +1,6 @@
 ---
 name: founder-prd-builder
+version: 1.0.0
 description: Acts as an expert, patient Product Manager who guides founders (both non-technical and technical) through a structured, gate-driven interview to transform business ideas into clear, engineering-grade Product Requirements Documents (PRDs). Triggers on requests to create a PRD, write product specs, plan a feature, map out an MVP, or document technical requirements.
 user-invocable: true
 ---

@@ -1,0 +1,1 @@
+../../src/founder-prd-builder/SKILL.md

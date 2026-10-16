@@ -19,11 +19,23 @@ A collection of specialized, production-ready AI agent skills and product engine
 
 ## Non-Technical Setup & Installation Guide
 
-You do **not** need to be a software engineer or use the command line to use this skill. Choose the AI platform you already use below:
+You do **not** need to be a software engineer or use the command line to use this skill. Choose the method that best fits your workflow:
+
+### 📦 Quick Download: Pre-Packaged Releases (Zero-Code)
+
+Every release of this repository automatically builds and attaches ready-to-use packages on the [**GitHub Releases**](../../releases) page:
+
+- **`founder-prd-builder-web-bundle.md`** *(For ChatGPT & Claude Web Users)*:  
+  A single, standalone text file formatted specifically for copying and pasting into ChatGPT Custom GPTs, Claude Projects, or Gemini System Prompts.
+- **`founder-prd-builder-plugin.zip`** *(For Code Editors & CLI Users)*:  
+  A pre-packaged archive containing the plugin manifest and skill files, ready to extract directly into your project or IDE configuration folder.
+
+---
 
 ### Method 1: Web AI Chats (ChatGPT, Claude.ai, Gemini) — *Easiest / No Setup*
 
-If you use a browser-based AI assistant, you can turn it into your personal Product Manager in under 60 seconds:
+If you use a browser-based AI assistant, you can turn it into your personal Product Manager in under 60 seconds using the pre-packaged bundle:
+
 
 #### In Claude.ai (Recommended: Claude Projects)
 1. Open [Claude.ai](https://claude.ai) and click **Projects** in the sidebar (available on Pro/Team plans) or open a new chat.
@@ -62,22 +74,26 @@ If you are using an AI-assisted code editor to work on your project:
 
 ---
 
-### Method 3: Agentic CLI Tools (Claude Code, Antigravity CLI)
+### Method 3: Agentic CLI Tools & Plugin Managers (Claude Code, Antigravity CLI)
 
-If you or your team use terminal AI coding agents:
+This repository includes native plugin manifests ([`plugin.json`](plugin.json) and [`.claude-plugin/plugin.json`](.claude-plugin/plugin.json)), allowing it to be installed directly as a plugin package:
 
-- **Claude Code:** Copy the folder into your project's `.claude/skills/` directory:
+- **Antigravity / Gemini CLI Plugin Install:**
+  ```bash
+  agy plugin install rubensteinventures/agent-skills
+  ```
+  *Or manual local install:*
+  ```bash
+  mkdir -p ~/.gemini/skills/founder-prd-builder
+  cp src/founder-prd-builder/SKILL.md ~/.gemini/skills/founder-prd-builder/SKILL.md
+  ```
+
+- **Claude Code:**
   ```bash
   mkdir -p .claude/skills/founder-prd-builder
   cp src/founder-prd-builder/SKILL.md .claude/skills/founder-prd-builder/SKILL.md
   ```
   Claude Code will automatically recognize the skill when you ask to plan or spec a feature.
-
-- **Antigravity / Gemini CLI:** Install into your global or local skills directory:
-  ```bash
-  mkdir -p ~/.gemini/skills/founder-prd-builder
-  cp src/founder-prd-builder/SKILL.md ~/.gemini/skills/founder-prd-builder/SKILL.md
-  ```
 
 ---
 
@@ -98,7 +114,22 @@ When working with the AI, the interview is designed to be low-effort and stress-
 
 ---
 
-## References & Prior Art
+## Creating Releases (For Maintainers)
+
+Releases and distribution bundles are automated via GitHub Actions:
+
+1. Create and push a version tag:
+   ```bash
+   git tag v1.0.0
+   git push origin v1.0.0
+   ```
+2. The [Release Packages workflow](.github/workflows/release.yml) will trigger automatically, build:
+   - `dist/founder-prd-builder-plugin.zip`
+   - `dist/founder-prd-builder-plugin.tar.gz`
+   - `dist/founder-prd-builder-web-bundle.md`
+   and publish a GitHub Release with auto-generated release notes and attached assets.
+
+---
 
 The enhancements to `founder-prd-builder` synthesize best-in-class concepts and workflows from leading PRD development skills across the AI engineering community:
 

@@ -1,0 +1,52 @@
+name: Release Packages
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Prepare Release Artifacts
+        run: |
+          mkdir -p dist
+          
+          # 1. Package plugin zip (includes plugin.json, Claude plugin manifest, skills, src, and docs)
+          zip -r dist/founder-prd-builder-plugin.zip plugin.json .claude-plugin/ skills/ src/ README.md
+          
+          # 2. Package tar.gz
+          tar -czf dist/founder-prd-builder-plugin.tar.gz plugin.json .claude-plugin/ skills/ src/ README.md
+          
+          # 3. Create standalone copy-paste web bundle for ChatGPT & Claude.ai
+          cat << 'EOF' > dist/founder-prd-builder-web-bundle.md
+          # Founder PRD Builder — Web AI Assistant Prompt Bundle
+          
+          Instructions: Copy and paste the entire content below into:
+          1. Claude.ai (Custom Instructions or Project Knowledge)
+          2. ChatGPT (Custom GPT Instructions or chat prompt)
+          3. Gemini (System Prompt or chat prompt)
+          
+          ============================= COPY BELOW THIS LINE =============================
+          EOF
+          
+          cat src/founder-prd-builder/SKILL.md >> dist/founder-prd-builder-web-bundle.md
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            dist/founder-prd-builder-plugin.zip
+            dist/founder-prd-builder-plugin.tar.gz
+            dist/founder-prd-builder-web-bundle.md
+          generate_release_notes: true
+          draft: false
+          prerelease: false

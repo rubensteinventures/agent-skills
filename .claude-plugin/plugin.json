@@ -1,0 +1,19 @@
+{
+  "name": "founder-prd-builder",
+  "version": "1.0.0",
+  "description": "Acts as an expert, patient Product Manager who guides founders through a structured, gate-driven interview to transform business ideas into clear, engineering-grade Product Requirements Documents (PRDs).",
+  "author": {
+    "name": "Rubenstein Ventures"
+  },
+  "homepage": "https://github.com/rubensteinventures/agent-skills",
+  "repository": "https://github.com/rubensteinventures/agent-skills",
+  "license": "MIT",
+  "keywords": [
+    "prd",
+    "product-manager",
+    "founder",
+    "requirements",
+    "specification",
+    "planning"
+  ]
+}
