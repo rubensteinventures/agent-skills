@@ -114,22 +114,7 @@ When working with the AI, the interview is designed to be low-effort and stress-
 
 ---
 
-## Creating Releases (For Maintainers)
-
-Releases and distribution bundles are automated via GitHub Actions:
-
-1. Create and push a version tag:
-   ```bash
-   git tag v1.0.0
-   git push origin v1.0.0
-   ```
-2. The [Release Packages workflow](.github/workflows/release.yml) will trigger automatically, build:
-   - `dist/founder-prd-builder-plugin.zip`
-   - `dist/founder-prd-builder-plugin.tar.gz`
-   - `dist/founder-prd-builder-web-bundle.md`
-   and publish a GitHub Release with auto-generated release notes and attached assets.
-
----
+## References & Prior Art
 
 The enhancements to `founder-prd-builder` synthesize best-in-class concepts and workflows from leading PRD development skills across the AI engineering community:
 
@@ -144,3 +129,10 @@ The enhancements to `founder-prd-builder` synthesize best-in-class concepts and 
 
 4. **[Callum Bir's BA PRD Skills](https://github.com/gocallum/nextjs16-agent-skills/tree/main/skills/ba-prd-skills)**
    - *Key Ideas Incorporated:* Context-aware repository reconnaissance (scanning existing codebases vs greenfield projects before asking questions), Marty Cagan outcome-focused questioning (*Inspired*), Teresa Torres assumption testing (*Continuous Discovery Habits*), MoSCoW prioritization, and token-efficient formatting optimized for AI parsing.
+
+---
+
+## Maintainers
+
+For instructions on releasing new versions and updating package manifests, see [MAINTAINERS.md](MAINTAINERS.md).
+
